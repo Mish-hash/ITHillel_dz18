@@ -35,4 +35,24 @@ class Time {
 const time = new Time;
 
 
+/*
+2) Создать таймер обратного отсчета, который будет в console выводить время в формате MM:SS.
+Где MM - количество минут, SS - количество секунд.
+При этом когда закончится время, нужно вывести в console строку "Timer End".
+*/
 
+function timer(arg) {
+
+    let time = new Date(arg * 1000);
+
+    const interval = setInterval(()=>{
+        if(time.valueOf() >= 0) {
+            console.log(time.toISOString().substr(14, 5));
+            time = new Date(time.valueOf() - 1000);
+        } else {
+            console.log('Timer End');
+            clearInterval(interval);
+        }
+    }, 1000)
+
+}
